@@ -15,6 +15,7 @@
         nav {
             background-color: #f3f4f6;
             padding: 1rem;
+            position: relative;
         }
 
         nav .container {
@@ -37,24 +38,34 @@
             gap: 2rem;
         }
 
-        .menu-button {
-            display: block;
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 4px;
             background: none;
             border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background-color: #000;
+            transition: all 0.3s ease;
         }
 
         .nav-links.active {
             display: flex;
             flex-direction: column;
             position: absolute;
-            top: 4rem;
+            top: 100%;
             left: 0;
             right: 0;
             background: #f3f4f6;
             padding: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
 
         .nav-links a {
@@ -62,6 +73,11 @@
             color: #000;
             font-size: 0.875rem;
             padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4b5563;
         }
 
         .nav-links a.active {
@@ -76,15 +92,33 @@
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .content p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
         .filters {
             margin: 2rem 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            background: #f3f4f6;
+            border-radius: 8px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .filters::-webkit-scrollbar {
+            display: none;
         }
 
         .filter-button {
@@ -94,7 +128,8 @@
             background: white;
             font-size: 0.875rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .filter-button:hover,
@@ -102,6 +137,7 @@
             background: #4b5563;
             color: white;
             border-color: #4b5563;
+            transform: translateY(-1px);
         }
 
         .stories-grid {
@@ -115,28 +151,40 @@
             border: 1px solid #e5e7eb;
             border-radius: 8px;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .story-image {
             width: 100%;
             height: 200px;
             background-color: #f3f4f6;
+            overflow: hidden;
         }
 
         .story-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .story-card:hover .story-image img {
+            transform: scale(1.05);
         }
 
         .story-content {
-            padding: 1rem;
+            padding: 1.25rem;
         }
 
         .story-meta {
             display: flex;
             gap: 1rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             font-size: 0.875rem;
             color: #6b7280;
         }
@@ -144,13 +192,16 @@
         .story-type {
             color: #4b5563;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .story-title {
             font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: #111827;
+            line-height: 1.3;
         }
 
         .story-description {
@@ -171,6 +222,11 @@
             border-radius: 9999px;
             font-size: 0.75rem;
             color: #4b5563;
+            transition: background-color 0.3s ease;
+        }
+
+        .tag:hover {
+            background: #e5e7eb;
         }
 
         @media (min-width: 768px) {
@@ -178,21 +234,39 @@
                 padding: 1rem 2rem;
             }
 
-            .menu-button {
+            .hamburger {
                 display: none;
             }
 
             .nav-links {
                 display: flex;
                 flex-direction: row;
+                position: static;
+                background: none;
+                box-shadow: none;
+                padding: 0;
             }
 
             .content {
                 padding: 2rem;
             }
 
+            h1 {
+                font-size: 2rem;
+            }
+
+            .filters {
+                padding: 0.75rem;
+                margin: 2.5rem 0;
+            }
+
             .stories-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .story-image {
+                height: 250px;
             }
         }
 
@@ -201,13 +275,45 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 0.75rem;
+            }
+
+            .filters {
+                margin: 1.5rem 0;
+                padding: 0.5rem;
+            }
+
+            .filter-button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .story-content {
+                padding: 1rem;
+            }
+
+            .story-title {
+                font-size: 1.125rem;
+            }
+
+            .story-meta {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="container">
             <a href="index.html" class="logo">TraceMine.ai</a>
-            <button class="menu-button">☰</button>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="index.html">HOME</a>
                 <a href="map.html">MAP</a>
@@ -253,17 +359,17 @@
 
             <div class="story-card">
                 <div class="story-image">
-                    <img src="community.png" alt="Community Impact">
+                    <img src="environment.png" alt="Environmental Impact">
                 </div>
                 <div class="story-content">
                     <div class="story-meta">
                         <span class="story-type">Case Study</span>
                         <span class="story-date">March 10, 2024</span>
                     </div>
-                    <h2 class="story-title">Community Displacement in Ghana's Gold Belt</h2>
-                    <p class="story-description">Analysis of social impacts and community displacement due to expanding gold mining operations.</p>
+                    <h2 class="story-title">Environmental Rehabilitation in Ghana's Gold Mining Areas</h2>
+                    <p class="story-description">Analysis of successful land restoration projects and ongoing challenges in Ghana's gold mining regions.</p>
                     <div class="story-tags">
-                        <span class="tag">Social Impact</span>
+                        <span class="tag">Land Restoration</span>
                         <span class="tag">Ghana</span>
                         <span class="tag">Gold Mining</span>
                     </div>
@@ -272,19 +378,19 @@
 
             <div class="story-card">
                 <div class="story-image">
-                    <img src="environment.png" alt="Environmental Restoration">
+                    <img src="community.png" alt="Community Impact">
                 </div>
                 <div class="story-content">
                     <div class="story-meta">
                         <span class="story-type">Analysis</span>
                         <span class="story-date">March 5, 2024</span>
                     </div>
-                    <h2 class="story-title">Restoration Efforts in Former Mining Sites</h2>
-                    <p class="story-description">Evaluation of environmental restoration projects in abandoned mining areas across Africa.</p>
+                    <h2 class="story-title">Socioeconomic Impact of Mining on Local Communities</h2>
+                    <p class="story-description">Examining the long-term effects of mining operations on community development and livelihoods.</p>
                     <div class="story-tags">
-                        <span class="tag">Restoration</span>
-                        <span class="tag">Environment</span>
-                        <span class="tag">Sustainability</span>
+                        <span class="tag">Community Impact</span>
+                        <span class="tag">Socioeconomic</span>
+                        <span class="tag">Development</span>
                     </div>
                 </div>
             </div>
@@ -292,16 +398,22 @@
     </div>
 
     <script>
-        // Mobile menu toggle
-        const menuButton = document.querySelector('.menu-button');
+        const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
+        const filterButtons = document.querySelectorAll('.filter-button');
         
-        menuButton.addEventListener('click', () => {
+        hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Filter buttons
-        const filterButtons = document.querySelectorAll('.filter-button');
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Filter button active state
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 filterButtons.forEach(btn => btn.classList.remove('active'));

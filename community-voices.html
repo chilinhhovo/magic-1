@@ -15,6 +15,7 @@
         nav {
             background-color: #f3f4f6;
             padding: 1rem;
+            position: relative;
         }
 
         nav .container {
@@ -37,24 +38,34 @@
             gap: 2rem;
         }
 
-        .menu-button {
-            display: block;
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 4px;
             background: none;
             border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background-color: #000;
+            transition: all 0.3s ease;
         }
 
         .nav-links.active {
             display: flex;
             flex-direction: column;
             position: absolute;
-            top: 4rem;
+            top: 100%;
             left: 0;
             right: 0;
             background: #f3f4f6;
             padding: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
 
         .nav-links a {
@@ -62,6 +73,11 @@
             color: #000;
             font-size: 0.875rem;
             padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4b5563;
         }
 
         .nav-links a.active {
@@ -76,8 +92,15 @@
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .content p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
         .testimonials-grid {
@@ -94,6 +117,12 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .testimonial-content {

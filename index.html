@@ -15,6 +15,7 @@
         nav {
             background-color: #f3f4f6;
             padding: 1rem 2rem;
+            position: relative;
         }
 
         nav .container {
@@ -43,6 +44,21 @@
             font-size: 0.875rem;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background-color: #000;
+            transition: all 0.3s ease;
+        }
+
         .hero {
             padding: 4rem 2rem;
             text-align: center;
@@ -66,6 +82,11 @@
             border: none;
             border-radius: 0.375rem;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #374151;
         }
 
         .map-container {
@@ -134,12 +155,78 @@
         .approach p {
             color: #666;
         }
+
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #f3f4f6;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .approach {
+                padding: 0 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="container">
             <a href="/" class="logo">TraceMine.ai</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="nav-links">
                 <a href="index.html">HOME</a>
                 <a href="map.html">MAP</a>
@@ -185,5 +272,14 @@
         <h2>OUR APPROACH</h2>
         <p>Lorem ipsum dolor sit amet, consectetut :er adipiecing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </section>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
