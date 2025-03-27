@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Locations - TraceMine.ai</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        nav {
+            background-color: #f3f4f6;
+            padding: 1rem;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .menu-button {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            background: #f3f4f6;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a.active {
+            color: #4b5563;
+            font-weight: 600;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .location-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .location-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .location-details {
+            padding: 1rem;
+        }
+
+        .location-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .stat {
+            background: #f3f4f6;
+            padding: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .menu-button {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .content {
+                padding: 2rem;
+            }
+
+            .location-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .location-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .impact-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">TraceMine.ai</a>
+            <button class="menu-button">☰</button>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="map.html">MAP</a>
+                <a href="focus-locations.html" class="active">FOCUS LOCATIONS</a>
+                <a href="stories-reports.html">STORIES & REPORTS</a>
+                <a href="3d-models.html">3D MODELS</a>
+                <a href="community-voices.html">COMMUNITY VOICES</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Focus Locations</h1>
+        <p>Detailed analysis of high-impact mining sites across Africa</p>
+
+        <div class="location-grid">
+            <div class="location-card">
+                <div class="location-image">
+                    <img src="congo.jpg" alt="Congo Mining Site">
+                </div>
+                <div class="location-details">
+                    <h2 class="location-title">Katanga Copper Belt, DRC</h2>
+                    <p>Large-scale copper and cobalt mining operation with significant environmental impact on local water sources and soil quality.</p>
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-value">75%</div>
+                            <div class="stat-label">Water Impact</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">60%</div>
+                            <div class="stat-label">Soil Degradation</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">45%</div>
+                            <div class="stat-label">Forest Loss</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">50k+</div>
+                            <div class="stat-label">People Affected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="location-image">
+                    <img src="ghana.jpg" alt="Ghana Mining Site">
+                </div>
+                <div class="location-details">
+                    <h2 class="location-title">Obuasi Gold Mine, Ghana</h2>
+                    <p>Historic gold mining region facing challenges with water pollution and land rehabilitation.</p>
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-value">65%</div>
+                            <div class="stat-label">Water Impact</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">55%</div>
+                            <div class="stat-label">Soil Degradation</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">35%</div>
+                            <div class="stat-label">Forest Loss</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">35k+</div>
+                            <div class="stat-label">People Affected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <div class="location-image">
+                    <img src="zambia.jpeg" alt="Zambia Mining Site">
+                </div>
+                <div class="location-details">
+                    <h2 class="location-title">Copperbelt Province, Zambia</h2>
+                    <p>Extensive copper mining region with ongoing environmental monitoring and community impact assessment.</p>
+                    <div class="impact-stats">
+                        <div class="stat">
+                            <div class="stat-value">70%</div>
+                            <div class="stat-label">Water Impact</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">50%</div>
+                            <div class="stat-label">Soil Degradation</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">40%</div>
+                            <div class="stat-label">Forest Loss</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">45k+</div>
+                            <div class="stat-label">People Affected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.querySelector('.menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 
